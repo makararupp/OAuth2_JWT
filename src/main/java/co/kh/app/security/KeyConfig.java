@@ -36,5 +36,4 @@ class KeyConfig {
                 .build();
     }
 
-
 }

@@ -1,5 +1,7 @@
 package co.kh.app.controller;
 
+import co.kh.app.dto.AuthDto;
+import co.kh.app.dto.RefreshTokenDto;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,8 +18,13 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/login")
-    public String login(@RequestBody LoginDto loginDto){
+    public AuthDto login(@RequestBody LoginDto loginDto){
         return authService.login(loginDto);
+    }
+
+    @PostMapping("/refresh")
+    public AuthDto refreshToken(@RequestBody RefreshTokenDto refreshTokenDto){
+       return authService.refresh(refreshTokenDto);
     }
     
 }

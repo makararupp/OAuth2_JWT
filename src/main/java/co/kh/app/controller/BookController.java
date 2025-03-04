@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 @RequestMapping("/api/v1/books")
 @RequiredArgsConstructor
 public class BookController {
-
     private final BookService bookService;
 
     @GetMapping

@@ -1,8 +1,11 @@
 package co.kh.app.service;
 
+import co.kh.app.dto.AuthDto;
 import co.kh.app.dto.LoginDto;
+import co.kh.app.dto.RefreshTokenDto;
 
 public interface AuthService {
 
-    String login(LoginDto loginDto);
+    AuthDto login(LoginDto loginDto);
+    AuthDto refresh(RefreshTokenDto refreshTokenDto);
 }
