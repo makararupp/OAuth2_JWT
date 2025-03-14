@@ -65,6 +65,7 @@ public class SecurityConfig {
         http.csrf(token -> token.disable());
         http.authorizeHttpRequests(auth -> {
             auth.requestMatchers("/anonymous/**","/api/v1/auth/**").permitAll();
+            auth.requestMatchers(AUTH_WHITELIST).permitAll();
             auth.requestMatchers(HttpMethod.GET, "/api/v1/books/**").hasAuthority("SCOPE_book:read");
             auth.requestMatchers(HttpMethod.POST, "/api/v1/books/**").hasAuthority("SCOPE_book:write");
             auth.requestMatchers(HttpMethod.PUT, "/api/v1/books/**").hasAuthority("SCOPE_book:update");
@@ -81,6 +82,14 @@ public class SecurityConfig {
         );
         return http.build();
     }
+    private static  final String[] AUTH_WHITELIST =
+            {
+                    "/api/v1/auth/**",
+                    "/v3/api-docs/**",
+                    "/v3/api-docs.yml",
+                    "/swagger-ui/**",
+                    "/swagger-ui.html"
+            };
     @Bean
     @Primary
     public JwtDecoder accessTokenJwtDecoder(){
@@ -119,6 +128,7 @@ public class SecurityConfig {
                 .Builder(keyUtil.getRefreshTokenPublicKey())
                 .privateKey(keyUtil.getRefreshTokenPrivateKey())
                 .build();
+
         JWKSet jwkSet = new JWKSet(jwk);
 
         JWKSource<SecurityContext> jwkSource =

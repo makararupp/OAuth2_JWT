@@ -68,7 +68,7 @@ public class AuthServiceImpl implements AuthService{
                 JwtEncoderParameters.from(accessTokenJwtClaimsSet)
         ).getTokenValue();
 
-        String refreshToken = accessTokenJwtEncoder.encode(
+        String refreshToken = refreshTokenJwtEncoder.encode(
                 JwtEncoderParameters.from(refreshTokenJwtClaimsSet)
         ).getTokenValue();
 
