@@ -5,7 +5,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@OpenAPIDefinition(info = @Info(title = "Book API",version = "1.0",description = "Book Management System"))
+@OpenAPIDefinition(info = @Info(title = "Library Management System",version = "1.0",
+		description = "Created by Makara @2025"))
 public class JwtJpaApplication{
 	public static void main(String[] args)	 {
 

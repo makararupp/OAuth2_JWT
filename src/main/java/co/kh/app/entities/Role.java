@@ -18,7 +18,7 @@ public class Role implements GrantedAuthority{
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-     private Long id;
+    private Long id;
     @Column(name = "role_name")
     private String name;
 
@@ -30,7 +30,7 @@ public class Role implements GrantedAuthority{
     joinColumns = @JoinColumn(name ="role_id", referencedColumnName ="id"),
     inverseJoinColumns = @JoinColumn(name = "authority_id", referencedColumnName ="id")
     )
-    private  List<Authority> authorities;
+    private List<Authority> authorities;
 
     @Override
     public String getAuthority() {

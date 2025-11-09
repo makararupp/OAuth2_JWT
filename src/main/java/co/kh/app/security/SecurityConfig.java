@@ -65,6 +65,7 @@ public class SecurityConfig {
         http.csrf(token -> token.disable());
         http.authorizeHttpRequests(auth -> {
             auth.requestMatchers("/anonymous/**","/api/v1/auth/**").permitAll();
+            auth.requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html").permitAll();// Allow Swagger endpoints
             auth.requestMatchers(AUTH_WHITELIST).permitAll();
             auth.requestMatchers(HttpMethod.GET, "/api/v1/books/**").hasAuthority("SCOPE_book:read");
             auth.requestMatchers(HttpMethod.POST, "/api/v1/books/**").hasAuthority("SCOPE_book:write");
